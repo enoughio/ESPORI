@@ -8,7 +8,7 @@ import { useParams, notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, ArrowLeft, CheckCircle, Calendar, Users, Code } from "lucide-react"
+import { ArrowRight, ArrowLeft, CheckCircle,  Users, Code } from "lucide-react"
 
 // Project data - in a real app, this would come from a database or CMS
 const projects = [
@@ -268,7 +268,7 @@ export default function ProjectPage() {
 
                 <Card className="border-none glass-card hover:shadow-lg transition-all duration-300">
                   <CardContent className="p-6 flex items-start space-x-4">
-                    <Calendar className="h-6 w-6 text-blue-400 flex-shrink-0 mt-1" />
+                    {/* <Calendar className="h-6 w-6 text-blue-400 flex-shrink-0 mt-1" /> */}
                     <div>
                       <h3 className="font-bold text-lg mb-1 text-white">Timeline</h3>
                       <p className="text-muted-foreground">{project.timeline}</p>

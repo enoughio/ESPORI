@@ -8,7 +8,7 @@ import { useParams, notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, Calendar, Clock, Share, Bookmark, Heart, MessageSquare } from "lucide-react"
+import { ArrowRight, Clock, Share, Bookmark, Heart, MessageSquare } from "lucide-react"
 
 // Blog post data - in a real app, this would come from a CMS
 const blogPosts = [
@@ -198,7 +198,7 @@ export default function BlogPostPage() {
                 <div>
                   <p className="text-sm font-medium text-white">{post.author}</p>
                   <div className="flex items-center text-xs text-muted-foreground">
-                    <Calendar className="h-3 w-3 mr-1" />
+                    {/* <Calendar className="h-3 w-3 mr-1" /> */}
                     {post.date} · <Clock className="h-3 w-3 mx-1" /> {post.readTime}
                   </div>
                 </div>
