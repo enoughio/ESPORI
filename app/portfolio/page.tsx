@@ -123,6 +123,30 @@ export default function PortfolioPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 md:pb-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background/90 z-0"></div>
+
+        {/* Add animated grid background */}
+        <div className="absolute inset-0 z-0 opacity-20">
+          <div className="absolute inset-0 grid grid-cols-6 gap-2">
+            {Array.from({ length: 36 }).map((_, i) => (
+              <motion.div
+                key={i}
+                className="bg-primary/10 rounded-md aspect-square"
+                initial={{ opacity: 0.1 }}
+                animate={{
+                  opacity: [0.1, 0.3, 0.1],
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 5,
+                  delay: Math.random() * 2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "reverse",
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -131,12 +155,36 @@ export default function PortfolioPage() {
             className="max-w-3xl mx-auto text-center"
           >
             <Badge className="mb-4 bg-primary/20 text-primary hover:bg-primary/30 transition-colors">Our Work</Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 neon-text">
+            <h1 className=" text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 neon-text">
               Showcasing our expertise
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               Explore our portfolio of successful projects and see how we've helped our clients achieve their goals.
             </p>
+
+            {/* Add animated devices illustration */}
+            {/* <motion.div
+              className="relative h-32 mx-auto mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <motion.div
+                className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-16 bg-primary/20 rounded-md border border-primary/30"
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
+              />
+              <motion.div
+                className="absolute left-1/4 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-16 bg-blue-500/20 rounded-md border border-blue-500/30"
+                animate={{ y: [5, -5, 5] }}
+                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
+              />
+              <motion.div
+                className="absolute right-1/4 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-16 h-12 bg-purple-500/20 rounded-md border border-purple-500/30"
+                animate={{ y: [-3, 3, -3] }}
+                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
+              />
+            </motion.div> */}
           </motion.div>
         </div>
       </section>

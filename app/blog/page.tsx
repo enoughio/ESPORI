@@ -125,6 +125,35 @@ export default function BlogPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 md:pb-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background/90 z-0"></div>
+
+        {/* Add animated text elements background */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {Array.from({ length: 15 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute text-primary/5 font-bold text-9xl"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                transform: `rotate(${Math.random() * 90 - 45}deg)`,
+              }}
+              initial={{ opacity: 0.1 }}
+              animate={{
+                opacity: [0.1, 0.2, 0.1],
+                y: [0, -30, 0],
+              }}
+              transition={{
+                duration: 10 + Math.random() * 10,
+                delay: Math.random() * 5,
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "reverse",
+              }}
+            >
+              {["AI", "CODE", "DESIGN", "CLOUD", "DEV", "UX", "WEB", "APP"][Math.floor(Math.random() * 8)]}
+            </motion.div>
+          ))}
+        </div>
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -141,6 +170,16 @@ export default function BlogPage() {
             <p className="text-xl text-muted-foreground mb-8">
               Stay updated with the latest in technology, design, and business insights from our experts.
             </p>
+
+            {/* Add animated underline */}
+            <motion.div
+              className="h-1 w-24 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full"
+              animate={{
+                width: ["6rem", "12rem", "6rem"],
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+            />
           </motion.div>
         </div>
       </section>

@@ -39,7 +39,6 @@ export const metadata: Metadata = {
       "Espori is where technology meets innovation. From AI-driven applications to stunning UI/UX design, we create solutions that accelerate your success.",
     images: ["/images/og-image.jpg"],
   },
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({

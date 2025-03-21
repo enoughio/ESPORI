@@ -25,6 +25,34 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 md:pb-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background/90 z-0"></div>
+
+        {/* Add animated background elements */}
+        <div className="absolute inset-0 z-0">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-primary/10"
+              style={{
+                width: `${Math.random() * 100 + 50}px`,
+                height: `${Math.random() * 100 + 50}px`,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                opacity: Math.random() * 0.5,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                x: [0, Math.random() * 20 - 10, 0],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 10 + Math.random() * 5,
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "reverse",
+              }}
+            />
+          ))}
+        </div>
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -39,6 +67,17 @@ export default function AboutPage() {
             <p className="text-xl text-muted-foreground mb-8">
               Founded in 2024, Espori represents the fusion of exceptional engineering and visionary design.
             </p>
+
+            {/* Add a floating button */}
+            <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}>
+              <Button
+                size="lg"
+                asChild
+                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-0"
+              >
+                <a href="#team">Meet Our Team</a>
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </section>

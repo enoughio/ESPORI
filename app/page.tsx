@@ -131,7 +131,7 @@ export default function Home() {
             </motion.div>
 
             {/* Add floating tech icons */}
-            <div className="absolute inset-x-0 bottom-32 flex justify-center">
+            {/* <div className="absolute inset-x-0 bottom-32 flex justify-center">
               <div className="relative h-20 w-full max-w-2xl">
                 {[
                   { icon: "react", left: "10%", delay: 0 },
@@ -161,7 +161,7 @@ export default function Home() {
                   </motion.div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
@@ -299,157 +299,96 @@ export default function Home() {
 
           {/* Updated to a hexagonal grid layout for visual distinction */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={servicesInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-xl -z-10 blur-xl"></div>
-              <div className="glass-card p-8 rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 h-full">
-                <div className="h-16 w-16 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-6">
-                  <Code className="h-8 w-8 text-cyan-400" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-white">Custom Software Development</h3>
-                <p className="text-muted-foreground mb-6">
-                  We build high-performance software tailored to your business needs, from enterprise applications to
-                  specialized tools that streamline your operations.
-                </p>
-                <ul className="space-y-3 mb-6">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-cyan-400 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">Python, Java, Node.js, .NET, C++</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-cyan-400 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">Healthcare, Finance, E-Commerce, Education</span>
-                  </li>
-                </ul>
-                <Button
-                  asChild
-                  className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-0"
+            {[
+              {
+                title: "Custom Software Development",
+                description:
+                  "We build high-performance software tailored to your business needs, from enterprise applications to specialized tools that streamline your operations.",
+                icon: <Code className="h-8 w-8 text-cyan-400" />,
+                color: "cyan",
+                features: ["Python, Java, Node.js, .NET, C++", "Healthcare, Finance, E-Commerce, Education"],
+                link: "/services/custom-software",
+                delay: 0.2,
+              },
+              {
+                title: "Web & Mobile App Development",
+                description:
+                  "Creating intuitive, high-performance apps built for growth, from responsive websites to native mobile applications that engage your users.",
+                icon: <Smartphone className="h-8 w-8 text-blue-400" />,
+                color: "blue",
+                features: [
+                  "React.js, Next.js, Flutter, Swift, Kotlin",
+                  "Responsive & Scalable Apps for all screen sizes",
+                ],
+                link: "/services/web-mobile",
+                delay: 0.4,
+              },
+              {
+                title: "UI/UX Design",
+                description:
+                  "Designs that captivate and convert users into customers, combining aesthetics with functionality to create experiences that users love.",
+                icon: <Palette className="h-8 w-8 text-purple-400" />,
+                color: "purple",
+                features: ["Wireframing & Prototyping", "Interactive UI animations & User testing"],
+                link: "/services/ui-ux",
+                delay: 0.6,
+              },
+              {
+                title: "AI & Cloud Solutions",
+                description:
+                  "Harness the power of AI & Cloud to unlock business potential with chatbots, predictive analysis, and automation solutions.",
+                icon: <Cloud className="h-8 w-8 text-cyan-400" />,
+                color: "cyan",
+                features: [
+                  "AI & Machine Learning: Chatbots, Predictive Analysis",
+                  "Cloud Computing: AWS, Google Cloud, Azure",
+                ],
+                link: "/services/ai-cloud",
+                delay: 0.8,
+              },
+            ].map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: service.delay }}
+                whileHover={{ scale: 1.03 }}
+                className="relative group"
+              >
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br from-${service.color}-500/10 to-${service.color === "blue" ? "purple" : "blue"}-500/10 rounded-xl -z-10 blur-xl transition-opacity duration-300 opacity-50 group-hover:opacity-100`}
+                ></div>
+                <div
+                  className={`glass-card p-8 rounded-xl border border-${service.color}-500/20 hover:border-${service.color}-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-${service.color}-500/10 h-full`}
                 >
-                  <Link href="/services/custom-software">
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={servicesInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-xl -z-10 blur-xl"></div>
-              <div className="glass-card p-8 rounded-xl border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 h-full">
-                <div className="h-16 w-16 rounded-lg bg-blue-500/20 flex items-center justify-center mb-6">
-                  <Smartphone className="h-8 w-8 text-blue-400" />
+                  <div
+                    className={`h-16 w-16 rounded-lg bg-${service.color}-500/20 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110`}
+                  >
+                    {service.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 text-white">{service.title}</h3>
+                  <p className="text-muted-foreground mb-6">{service.description}</p>
+                  <ul className="space-y-3 mb-6">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="flex items-start">
+                        <CheckCircle className={`h-5 w-5 text-${service.color}-400 mr-2 flex-shrink-0 mt-0.5`} />
+                        <span className="text-muted-foreground">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button
+                    asChild
+                    className={`group bg-gradient-to-r from-${service.color}-500 to-${service.color === "blue" ? "purple" : "blue"}-500 hover:from-${service.color}-600 hover:to-${service.color === "blue" ? "purple" : "blue"}-600 text-white border-0 transition-all duration-300`}
+                  >
+                    <Link href={service.link}>
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-white">Web & Mobile App Development</h3>
-                <p className="text-muted-foreground mb-6">
-                  Creating intuitive, high-performance apps built for growth, from responsive websites to native mobile
-                  applications that engage your users.
-                </p>
-                <ul className="space-y-3 mb-6">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-blue-400 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">React.js, Next.js, Flutter, Swift, Kotlin</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-blue-400 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">Responsive & Scalable Apps for all screen sizes</span>
-                  </li>
-                </ul>
-                <Button
-                  asChild
-                  className="group bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0"
-                >
-                  <Link href="/services/web-mobile">
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={servicesInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl -z-10 blur-xl"></div>
-              <div className="glass-card p-8 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10 h-full">
-                <div className="h-16 w-16 rounded-lg bg-purple-500/20 flex items-center justify-center mb-6">
-                  <Palette className="h-8 w-8 text-purple-400" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-white">UI/UX Design</h3>
-                <p className="text-muted-foreground mb-6">
-                  Designs that captivate and convert users into customers, combining aesthetics with functionality to
-                  create experiences that users love.
-                </p>
-                <ul className="space-y-3 mb-6">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-purple-400 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">Wireframing & Prototyping</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-purple-400 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">Interactive UI animations & User testing</span>
-                  </li>
-                </ul>
-                <Button
-                  asChild
-                  className="group bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white border-0"
-                >
-                  <Link href="/services/ui-ux">
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={servicesInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-amber-500/10 rounded-xl -z-10 blur-xl"></div>
-              <div className="glass-card p-8 rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 h-full">
-                <div className="h-16 w-16 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-6">
-                  <Cloud className="h-8 w-8 text-cyan-400" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-white">AI & Cloud Solutions</h3>
-                <p className="text-muted-foreground mb-6">
-                  Harness the power of AI & Cloud to unlock business potential with chatbots, predictive analysis, and
-                  automation solutions.
-                </p>
-                <ul className="space-y-3 mb-6">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-cyan-400 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">AI & Machine Learning: Chatbots, Predictive Analysis</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-cyan-400 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">Cloud Computing: AWS, Google Cloud, Azure</span>
-                  </li>
-                </ul>
-                <Button
-                  asChild
-                  className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-0"
-                >
-                  <Link href="/services/ai-cloud">
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

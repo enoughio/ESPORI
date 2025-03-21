@@ -37,6 +37,7 @@ export default function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled ? "bg-background/70 backdrop-blur-xl border-b border-border/40" : "bg-transparent",
+        theme === "light" && "text-foreground",
       )}
     >
       <nav className="container mx-auto flex items-center justify-between p-4">
@@ -76,7 +77,7 @@ export default function Header() {
         </div>
 
         <div className="hidden md:flex md:items-center md:space-x-4">
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
@@ -90,7 +91,7 @@ export default function Header() {
             >
               {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
-          </motion.div>
+          </motion.div> */}
 
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -140,7 +141,7 @@ export default function Header() {
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border/40"
+          className={`md:hidden backdrop-blur-lg ${theme === "dark" ? "bg-background/95" : "bg-background/95"} border-b border-border/40`}
         >
           <div className="pt-2 pb-4 space-y-1 px-4">
             {navigation.map((item) => (
