@@ -48,6 +48,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+      <meta name="google-site-verification" content="BHRdFfuNPFy9qCc02vXLPelSoPmv3HRl1azmNvxPp6k" />
+      </head>
       <body className={`${inter.className} dark`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <div className="min-h-screen bg-gradient-to-b from-background to-background/90 text-foreground">
