@@ -39,34 +39,6 @@ export default function Home() {
           <HeroAnimation />
         </div>
 
-        {/* Add animated shapes */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 blur-3xl"
-              style={{
-                width: `${Math.random() * 300 + 200}px`,
-                height: `${Math.random() * 300 + 200}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                opacity: 0.4,
-              }}
-              animate={{
-                x: [0, 30, 0],
-                y: [0, 30, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 15,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "reverse",
-                delay: i * 2,
-              }}
-            />
-          ))}
-        </div>
-
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
@@ -75,7 +47,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <Badge className="mb-4 bg-primary/20 text-primary hover:bg-primary/30 transition-colors">
-                Software Agency
+                Software Agency in Bhopal, India
               </Badge>
             </motion.div>
 
@@ -85,7 +57,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 neon-text"
             >
-              Innovate. Build. Scale. Elevate Your Business with Espori.
+              We create efficient software solutions for businesses and early-stage startups.
             </motion.h1>
 
             <motion.p
@@ -94,8 +66,8 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
             >
-              Espori is where technology meets innovation. From AI-driven applications to stunning UI/UX design, we
-              create solutions that accelerate your success.
+              We create efficient software for businesses and startups to streamline operations and boost growth. Our
+              solutions are designed for scalability and ease of use.
             </motion.p>
 
             <motion.div
@@ -129,39 +101,6 @@ export default function Home() {
                 </Link>
               </Button>
             </motion.div>
-
-            {/* Add floating tech icons */}
-            {/* <div className="absolute inset-x-0 bottom-32 flex justify-center">
-              <div className="relative h-20 w-full max-w-2xl">
-                {[
-                  { icon: "react", left: "10%", delay: 0 },
-                  { icon: "node", left: "25%", delay: 1.5 },
-                  { icon: "python", left: "40%", delay: 1 },
-                  { icon: "aws", left: "55%", delay: 2 },
-                  { icon: "figma", left: "70%", delay: 0.5 },
-                  { icon: "ai", left: "85%", delay: 1.2 },
-                ].map((tech, index) => (
-                  <motion.div
-                    key={index}
-                    className="absolute glass-card p-2 rounded-full border border-primary/20"
-                    style={{ left: tech.left, top: 0 }}
-                    animate={{
-                      y: [0, -15, 0],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Number.POSITIVE_INFINITY,
-                      repeatType: "reverse",
-                      delay: tech.delay,
-                    }}
-                  >
-                    <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="text-xs font-medium text-primary">{tech.icon}</span>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div> */}
           </div>
         </div>
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
@@ -169,6 +108,7 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* Rest of the home page content remains the same */}
       {/* Why Choose Espori? */}
       <section ref={statsRef} className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background/90 z-0"></div>
@@ -208,6 +148,7 @@ export default function Home() {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -229,6 +170,7 @@ export default function Home() {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -250,6 +192,7 @@ export default function Home() {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -304,7 +247,7 @@ export default function Home() {
                 title: "Custom Software Development",
                 description:
                   "We build high-performance software tailored to your business needs, from enterprise applications to specialized tools that streamline your operations.",
-                icon: <Code className="h-8 w-8 text-cyan-400" />,
+                icon: <Code className="h-8 w-8 text-cyan-400" aria-hidden="true" />,
                 color: "cyan",
                 features: ["Python, Java, Node.js, .NET, C++", "Healthcare, Finance, E-Commerce, Education"],
                 link: "/services/custom-software",
@@ -314,7 +257,7 @@ export default function Home() {
                 title: "Web & Mobile App Development",
                 description:
                   "Creating intuitive, high-performance apps built for growth, from responsive websites to native mobile applications that engage your users.",
-                icon: <Smartphone className="h-8 w-8 text-blue-400" />,
+                icon: <Smartphone className="h-8 w-8 text-blue-400" aria-hidden="true" />,
                 color: "blue",
                 features: [
                   "React.js, Next.js, Flutter, Swift, Kotlin",
@@ -327,7 +270,7 @@ export default function Home() {
                 title: "UI/UX Design",
                 description:
                   "Designs that captivate and convert users into customers, combining aesthetics with functionality to create experiences that users love.",
-                icon: <Palette className="h-8 w-8 text-purple-400" />,
+                icon: <Palette className="h-8 w-8 text-purple-400" aria-hidden="true" />,
                 color: "purple",
                 features: ["Wireframing & Prototyping", "Interactive UI animations & User testing"],
                 link: "/services/ui-ux",
@@ -337,7 +280,7 @@ export default function Home() {
                 title: "AI & Cloud Solutions",
                 description:
                   "Harness the power of AI & Cloud to unlock business potential with chatbots, predictive analysis, and automation solutions.",
-                icon: <Cloud className="h-8 w-8 text-cyan-400" />,
+                icon: <Cloud className="h-8 w-8 text-cyan-400" aria-hidden="true" />,
                 color: "cyan",
                 features: [
                   "AI & Machine Learning: Chatbots, Predictive Analysis",
@@ -372,7 +315,10 @@ export default function Home() {
                   <ul className="space-y-3 mb-6">
                     {service.features.map((feature, i) => (
                       <li key={i} className="flex items-start">
-                        <CheckCircle className={`h-5 w-5 text-${service.color}-400 mr-2 flex-shrink-0 mt-0.5`} />
+                        <CheckCircle
+                          className={`h-5 w-5 text-${service.color}-400 mr-2 flex-shrink-0 mt-0.5`}
+                          aria-hidden="true"
+                        />
                         <span className="text-muted-foreground">{feature}</span>
                       </li>
                     ))}
@@ -383,7 +329,10 @@ export default function Home() {
                   >
                     <Link href={service.link}>
                       Learn More
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight
+                        className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+                        aria-hidden="true"
+                      />
                     </Link>
                   </Button>
                 </div>
@@ -413,7 +362,10 @@ export default function Home() {
             >
               <Link href="/portfolio">
                 View All Projects
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight
+                  className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
               </Link>
             </Button>
           </div>
@@ -466,7 +418,10 @@ export default function Home() {
             >
               <Link href="/contact">
                 Schedule a Free Consultation
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight
+                  className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
               </Link>
             </Button>
           </motion.div>

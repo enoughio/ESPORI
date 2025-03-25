@@ -1,9 +1,10 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Facebook, Twitter, Instagram, Linkedin, Github, ArrowRight } from "lucide-react"
+import { Facebook, Twitter, Instagram, Linkedin, Github, Quote } from "lucide-react"
 
 export default function Footer() {
+  // Store email in a variable for easy changes later
+  const CONTACT_EMAIL = "aniketj.developer@gmail.com"
+
   return (
     <footer className="bg-background/30 backdrop-blur-lg border-t border-border/40 py-12 md:py-16">
       <div className="container mx-auto px-4">
@@ -24,45 +25,45 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-cyan-400 transition-colors"
+                aria-label="Twitter"
               >
                 <Twitter size={20} />
-                <span className="sr-only">Twitter</span>
               </Link>
               <Link
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-blue-500 transition-colors"
+                aria-label="Facebook"
               >
                 <Facebook size={20} />
-                <span className="sr-only">Facebook</span>
               </Link>
               <Link
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-purple-500 transition-colors"
+                aria-label="Instagram"
               >
                 <Instagram size={20} />
-                <span className="sr-only">Instagram</span>
               </Link>
               <Link
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-blue-400 transition-colors"
+                aria-label="LinkedIn"
               >
                 <Linkedin size={20} />
-                <span className="sr-only">LinkedIn</span>
               </Link>
               <Link
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-white transition-colors"
+                aria-label="GitHub"
               >
                 <Github size={20} />
-                <span className="sr-only">GitHub</span>
               </Link>
             </div>
           </div>
@@ -96,6 +97,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/careers" className="text-muted-foreground hover:text-primary transition-colors">
+                  Careers
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
                   Contact
                 </Link>
@@ -108,7 +114,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/services/custom-software"
+                  href="/services#custom-software"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Custom Software Development
@@ -116,19 +122,19 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/web-mobile"
+                  href="/services#web-mobile"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Web & Mobile App Development
                 </Link>
               </li>
               <li>
-                <Link href="/services/ui-ux" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/services#ui-ux" className="text-muted-foreground hover:text-primary transition-colors">
                   UI/UX Design
                 </Link>
               </li>
               <li>
-                <Link href="/services/ai-cloud" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/services#ai-cloud" className="text-muted-foreground hover:text-primary transition-colors">
                   AI & Cloud Solutions
                 </Link>
               </li>
@@ -136,34 +142,18 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-medium text-lg mb-4 text-white">Stay Updated on Tech Trends!</h3>
-            <p className="text-muted-foreground text-sm mb-4">
-              Subscribe to our newsletter for the latest insights and tech news.
-            </p>
-            <form className="space-y-2">
-              <div className="relative">
-                <Input
-                  type="email"
-                  placeholder="Your email"
-                  required
-                  className="bg-background/50 border-border/50 focus:border-primary pr-10"
-                />
-                <Button
-                  type="submit"
-                  size="icon"
-                  className="absolute right-1 top-1 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-0"
-                >
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </div>
-              <p className="text-xs text-muted-foreground">
-                By subscribing, you agree to our{" "}
-                <Link href="/privacy" className="text-primary hover:underline">
-                  Privacy Policy
-                </Link>
-                .
-              </p>
-            </form>
+            <h3 className="font-medium text-lg mb-4 text-white">Inspirational Quote</h3>
+            <div className="glass-card p-4 rounded-lg border border-primary/20">
+              <Quote className="h-8 w-8 text-primary/60 mb-2" />
+              <p className="text-muted-foreground italic mb-2">"The best way to predict the future is to create it."</p>
+              <p className="text-sm text-primary/80 text-right">— Peter Drucker</p>
+            </div>
+            <div className="mt-4">
+              <p className="text-sm text-muted-foreground mb-2">For inquiries:</p>
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-primary hover:underline">
+                {CONTACT_EMAIL}
+              </a>
+            </div>
           </div>
         </div>
 

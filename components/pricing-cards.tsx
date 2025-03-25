@@ -35,7 +35,7 @@ export default function PricingCards() {
       delay: 0.1,
     },
     {
-      name: "Premium Website",
+      name: "E-commerce Website",
       price: "$1,200",
       description: "Complete solution for businesses selling products online",
       features: [
@@ -48,7 +48,7 @@ export default function PricingCards() {
         "Customer accounts",
         "Email marketing integration",
       ],
-      cta: "Choose Premium",
+      cta: "Choose E-commerce",
       popular: false,
       delay: 0.2,
     },

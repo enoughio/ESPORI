@@ -8,8 +8,18 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { ArrowRight, Search } from "lucide-react"
-import { Metadata } from "next"
+import {
+  ArrowRight,
+  Search,
+  BookOpen,
+  FileText,
+  Tag,
+  Calendar,
+  User,
+  Clock,
+  MessageSquare,
+  ThumbsUp,
+} from "lucide-react"
 
 const categories = [
   { id: "all", name: "All" },
@@ -105,40 +115,6 @@ const blogPosts = [
   },
 ]
 
-
-export const metadata: Metadata = {
-  title:
-    "Espori | We Build Custom Software and Signatures websites for bussines",
-  description:
-    "Espori is a top-tier software agency based in Bhopal, India, offering global clients innovative solutions in web development, mobile apps, UI/UX design, AI solutions, and digital marketing. We help startups, small businesses, and enterprises establish a strong online presence and scale their operations.",
-  keywords:
-    "software agency in India, web development, mobile app development, AI solutions, UI/UX design, SEO services, digital marketing, branding, cloud computing, startup solutions, small business websites, SaaS development, AI-driven applications, IT consulting, tech solutions, custom software development, enterprise software, business automation, website builder, Bhopal, Madhya Predesh, M.P., SEO, wordpress, wp, fast website, website for bussines, marketing agency, best software agency in Bhopal, full-stack development, website maintenance, eCommerce solutions, cross-platform apps, progressive web apps (PWA), cloud migration services, machine learning solutions, chatbot development, fintech software development, healthtech solutions, EdTech software development, blockchain development, DevOps services, cybersecurity solutions, MVP development for startups, NoCode/LowCode development, software testing and QA, social media marketing, PPC advertising, performance marketing, mobile-first web design, CRM and ERP development, B2B and B2C solutions software agency in USA, software agency in Denver, software agency in USA, web development USA, mobile app development USA, AI solutions USA, UI/UX design USA, software agency Denver, best software company in California, tech solutions USA, cloud computing USA, SaaS development USA, AI-driven applications USA, IT consulting USA, software agency in UK, web development London, AI solutions UK, custom software development UK, startup solutions UK, enterprise software UK, business automation UK, SEO services UK, digital marketing UK, small business websites UK, software agency Australia, web development Sydney, mobile app development Australia, AI and cloud solutions Australia, branding solutions Australia, tech consulting Australia, machine learning Australia, chatbot development Australia, blockchain development Australia, fintech software development Australia, healthtech software Australia, EdTech software development Australia, DevOps services Australia, MVP development USA, B2B and B2C solutions USA, cross-platform apps USA, NoCode/LowCode development USA, software testing USA, digital transformation services USA, SaaS solutions UK, cloud migration USA, marketing agency Denver, startup marketing USA, website design for startups USA, AI-powered applications USA, CRM development USA, best software agency in Sydney, full-stack development California, SEO and branding for startups USA.",
-  openGraph: {
-    title: "Espori | Custom Software, Web Development & Digital Solutions",
-    description:
-      "Espori is a leading software agency offering global clients top-notch services in web and mobile development, UI/UX design, AI solutions, and digital marketing. We empower startups and businesses with technology-driven solutions.",
-    url: "https://espori.com",
-    siteName: "Espori",
-    images: [
-      {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Espori Software Agency",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Espori | Custom Software, Web Development & Digital Solutions",
-    description:
-      "Espori provides AI-driven applications, web development, mobile apps, UI/UX design, SEO, and branding solutions for startups, small businesses, and enterprises worldwide.",
-    images: ["/images/og-image.jpg"],
-  },
-};
-
 export default function BlogPage() {
   const [activeCategory, setActiveCategory] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
@@ -157,42 +133,99 @@ export default function BlogPage() {
 
   return (
     <>
-    <head>
-    <meta
-          name="google-site-verification"
-          content="BHRdFfuNPFy9qCc02vXLPelSoPmv3HRl1azmNvxPp6k"
-        />
-    </head>
       {/* Hero Section */}
       <section className="pt-32 pb-16 md:pb-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background/90 z-0"></div>
 
-        {/* Add animated text elements background */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          {Array.from({ length: 15 }).map((_, i) => (
+        {/* Animated background elements */}
+        <div className="absolute inset-0 z-0">
+          {/* Animated blog-related icons */}
+          {[BookOpen, FileText, Tag, Calendar, User, Clock, MessageSquare, ThumbsUp].map((Icon, index) =>
+            Array.from({ length: 3 }).map((_, i) => (
+              <motion.div
+                key={`${index}-${i}`}
+                className="absolute text-primary/10"
+                style={{
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  opacity: 0.3 + Math.random() * 0.7,
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  rotate: [0, 10, -10, 0],
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  duration: 10 + Math.random() * 10,
+                  delay: Math.random() * 5,
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "reverse",
+                }}
+              >
+                <Icon size={20 + Math.random() * 40} />
+              </motion.div>
+            )),
+          )}
+
+          {/* Animated floating article cards */}
+          {Array.from({ length: 5 }).map((_, i) => (
             <motion.div
               key={i}
-              className="absolute text-primary/5 font-bold text-9xl"
+              className="absolute rounded-lg bg-primary/5 border border-primary/10"
               style={{
+                width: 150 + Math.random() * 100,
+                height: 80 + Math.random() * 60,
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
-                transform: `rotate(${Math.random() * 90 - 45}deg)`,
+                rotate: Math.random() * 20 - 10,
+                opacity: 0.2 + Math.random() * 0.2,
               }}
-              initial={{ opacity: 0.1 }}
               animate={{
-                opacity: [0.1, 0.2, 0.1],
-                y: [0, -30, 0],
+                y: [0, -20, 0],
+                rotate: [Math.random() * 10 - 5, Math.random() * 10 - 5, Math.random() * 10 - 5],
+                opacity: [0.2, 0.3, 0.2],
               }}
               transition={{
-                duration: 10 + Math.random() * 10,
-                delay: Math.random() * 5,
+                duration: 5 + Math.random() * 5,
                 repeat: Number.POSITIVE_INFINITY,
                 repeatType: "reverse",
+                delay: Math.random() * 2,
               }}
             >
-              {["AI", "CODE", "DESIGN", "CLOUD", "DEV", "UX", "WEB", "APP"][Math.floor(Math.random() * 8)]}
+              <div className="absolute top-2 left-2 right-2 h-2 bg-primary/20 rounded-full"></div>
+              <div className="absolute top-6 left-2 w-1/2 h-2 bg-primary/15 rounded-full"></div>
+              <div className="absolute top-10 left-2 w-3/4 h-2 bg-primary/10 rounded-full"></div>
+              <div className="absolute top-14 left-2 w-1/3 h-2 bg-primary/15 rounded-full"></div>
             </motion.div>
           ))}
+
+          {/* Animated text elements background */}
+          <div className="absolute inset-0 z-0 overflow-hidden opacity-10">
+            {Array.from({ length: 15 }).map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute text-primary/5 font-bold text-9xl"
+                style={{
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  transform: `rotate(${Math.random() * 90 - 45}deg)`,
+                }}
+                initial={{ opacity: 0.1 }}
+                animate={{
+                  opacity: [0.1, 0.2, 0.1],
+                  y: [0, -30, 0],
+                }}
+                transition={{
+                  duration: 10 + Math.random() * 10,
+                  delay: Math.random() * 5,
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "reverse",
+                }}
+              >
+                {["AI", "CODE", "DESIGN", "CLOUD", "DEV", "UX", "WEB", "APP"][Math.floor(Math.random() * 8)]}
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -212,7 +245,49 @@ export default function BlogPage() {
               Stay updated with the latest in technology, design, and business insights from our experts.
             </p>
 
-            {/* Add animated underline */}
+            {/* Animated category pills */}
+            <div className="flex flex-wrap justify-center gap-3 mb-8">
+              {categories.map((category, index) => (
+                <motion.div
+                  key={category.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                  className="glass-card px-3 py-1 rounded-full text-sm"
+                >
+                  {category.name}
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Animated search bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 20, width: "80%" }}
+              animate={{ opacity: 1, y: 0, width: "100%" }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="relative max-w-md mx-auto mb-8"
+            >
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-primary/60" />
+                <motion.div
+                  className="absolute inset-0 rounded-full"
+                  animate={{
+                    boxShadow: [
+                      "0 0 0 rgba(66, 153, 225, 0)",
+                      "0 0 10px rgba(66, 153, 225, 0.3)",
+                      "0 0 0 rgba(66, 153, 225, 0)",
+                    ],
+                  }}
+                  transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+                />
+                <Input
+                  placeholder="Search for articles..."
+                  className="pl-10 bg-background/50 border-primary/20 focus:border-primary rounded-full"
+                />
+              </div>
+            </motion.div>
+
+            {/* Animated underline */}
             <motion.div
               className="h-1 w-24 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full"
               animate={{
@@ -221,13 +296,32 @@ export default function BlogPage() {
               }}
               transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
             />
+
+            {/* Animated article preview */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 1 }}
+              className="mt-8"
+            >
+              <Button
+                size="lg"
+                asChild
+                className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-0"
+              >
+                <a href="#featured-post">
+                  Explore Articles
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Featured Post */}
       {featuredPost && (
-        <section className="py-8 relative overflow-hidden">
+        <section id="featured-post" className="py-8 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background to-background/90 z-0"></div>
           <div className="container mx-auto px-4 relative z-10">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>

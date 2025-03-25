@@ -5,7 +5,6 @@ import { useInView } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
-import { motion } from "framer-motion"
 
 export default function ContactBanner() {
   const ref = useRef<HTMLDivElement>(null)
@@ -14,39 +13,48 @@ export default function ContactBanner() {
   return (
     <section
       ref={ref}
-      // className="relative py-20 overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+      className="relative py-20 overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 text-white"
     >
       {/* Animated particles */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-white/10"
+            style={{
+              width: `${Math.random() * 100 + 50}px`,
+              height: `${Math.random() * 100 + 50}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.5,
+              transform: `scale(${isInView ? 1 : 0})`,
+              transition: `transform 0.5s ease ${i * 0.05}s`,
+            }}
+          />
+        ))}
+      </div>
 
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 gradient-animation opacity-20 z-0"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6 }}
-            className="glass-card rounded-2xl p-10 md:p-16 max-w-4xl mx-auto text-center"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white neon-text">
-              Ready to elevate your digital presence?
-            </h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Let's discuss how we can help you achieve your goals with innovative digital solutions.
-            </p>
-            <Button
-              size="lg"
-              asChild
-              className="group bg-gradient-to-r from-cyan-400 to-blue-400 hover:from-cyan-600 hover:to-blue-600 text-white border-0 neon-border"
-            >
-              <Link href="/contact">
-                Get a Free Consultation
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-          </motion.div>
+      <div className="container mx-auto px-4 relative z-10">
+        <div
+          className="max-w-3xl mx-auto text-center"
+          style={{
+            opacity: isInView ? 1 : 0,
+            transform: isInView ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to elevate your digital presence?</h2>
+          <p className="text-xl text-white/80 mb-8">
+            Let's discuss how we can help you achieve your goals with innovative digital solutions.
+          </p>
+          <Button size="lg" variant="secondary" asChild className="group">
+            <Link href="/contact">
+              Contact Us
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
         </div>
-      </section>
+      </div>
     </section>
   )
 }

@@ -77,7 +77,7 @@ export default function Header() {
         </div>
 
         <div className="hidden md:flex md:items-center md:space-x-4">
-          {/* <motion.div
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
@@ -91,7 +91,7 @@ export default function Header() {
             >
               {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
-          </motion.div> */}
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
